@@ -1,0 +1,47 @@
+Customers [icon: user, color: blue]{
+  CustomerID INT64 pk(🗝️)
+  FirstName STRING
+  LastName STRING
+  CustomerEmail STRING
+  CustomerPhone STRING
+  CustomerAddress STRING 
+  CustomerCity STRING
+  CustomerState STRING
+  CustomerZip INT64
+  createdAt timestamp
+}
+
+Orders [icon: shopping-cart, color: green] {
+  OrderID INT64 pk(🗝️)
+  Date DATE
+  CustomerID INT64 fk(🔗)
+  ProdNumber STRING fk(🔗)
+  Quantity INT64
+  createdAt timestamp
+}
+
+Products [icon: box, color: orange] {
+  ProdNumber STRING pk(🗝️)
+  ProdName STRING
+  Category INT64 fk(🔗)
+  Price FLOAT64
+  createdAt timestamp
+}
+
+ProductCategory [icon: tag, color: purple] {
+  CategoryID INT64 pk(🗝️)
+  CategoryName STRING
+  CategoryAbbreviation STRING
+  createdAt timestamp
+}
+
+Customers.CustomerID < Orders.CustomerID
+ProductCategory.CategoryID < Products.Category
+Products.ProdNumber < Orders.ProdNumber
+
+
+
+
+
+
+
